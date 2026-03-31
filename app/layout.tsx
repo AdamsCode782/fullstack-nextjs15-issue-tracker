@@ -3,7 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import { connection } from 'next/server'
-  
+import { Suspense } from 'react'
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -25,7 +26,9 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
         <Toaster position="top-right" />
-        {children}
+        <Suspense>
+          {children}
+        </Suspense>
       </body>
     </html>
   )
