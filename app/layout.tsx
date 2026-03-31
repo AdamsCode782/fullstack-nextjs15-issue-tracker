@@ -2,8 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
-import { connection } from 'next/server'
-import { Suspense } from 'react'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,20 +13,18 @@ export const metadata: Metadata = {
   description: 'A modern issue tracking application built with Next.js 15',
 }
 
+export const dynamic = 'force-dynamic'
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  await connection()
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
         <Toaster position="top-right" />
-        <Suspense>
-          {children}
-        </Suspense>
+        {children}
       </body>
     </html>
   )
