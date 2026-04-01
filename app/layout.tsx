@@ -13,8 +13,6 @@ export const metadata: Metadata = {
   description: 'A modern issue tracking application built with Next.js 15',
 }
 
-export const dynamic = 'force-dynamic'
-
 export default function RootLayout({
   children,
 }: Readonly<{
